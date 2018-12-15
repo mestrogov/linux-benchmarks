@@ -35,7 +35,7 @@ class Benchmarks:
             m_events = str(str(check_output("sysbench cpu run", shell=True)).split(
                 "total number of events:")[1].split("\\")[0].strip())
 
-            print("### Sysbench CPU benchmark results: Single Thread - {0} events; Multi Thread - {1} events".
+            print("### Sysbench CPU benchmark results: Single thread - {0} events; Multi thread - {1} events".
                   format(s_events, m_events))
             return s_events, m_events
 
@@ -96,7 +96,7 @@ class Benchmarks:
         def cachefly():
             print("\n\n### Executing Cachefly network performance benchmark  ...")
 
-            download = str(str(check_output("wget -O /dev/null http://cachefly.cachefly.net/100mb.test", stderr=STDOUT,
+            download = str(str(check_output("wget -i /dev/null http://cachefly.cachefly.net/100mb.test", stderr=STDOUT,
                                             shell=True)).split("Downloaded:")[1].split("(")[1].split(")")[0].strip())
 
             print("### Cachefly network download performance: {0}".format(download))
@@ -114,4 +114,4 @@ class Benchmarks:
             return download, upload
 
 
-Benchmarks.execute()
+Benchmarks.Network.cachefly()
