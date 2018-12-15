@@ -10,6 +10,7 @@ class Benchmarks:
     def execute():
         for a in range(2):
             print("### Executing benchmarks ...\n\n\n")
+
             Benchmarks.Sysbench.cpu()
             Benchmarks.Sysbench.memory()
             Benchmarks.Sysbench.fileio()
