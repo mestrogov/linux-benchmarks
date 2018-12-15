@@ -21,14 +21,14 @@ class Benchmarks:
             Benchmarks.Network.cachefly()
             Benchmarks.Network.speedtest()
 
-            print("### Executing benchmarks again in 30 seconds ...")
+            print("\n\n### Executing benchmarks again in 30 seconds ...")
             sleep(30)
 
     class Sysbench:
 
         @staticmethod
         def cpu():
-            print("### Executing Sysbench CPU benchmark ...\n\n")
+            print("\n\n### Executing Sysbench CPU benchmark ...")
 
             s_events = str(str(check_output("sysbench cpu --threads=1 run", shell=True)).split(
                 "total number of events:")[1].split("\\")[0].strip())
@@ -41,7 +41,7 @@ class Benchmarks:
 
         @staticmethod
         def memory():
-            print("### Executing Sysbench Memory benchmark ...\n\n")
+            print("\n\n### Executing Sysbench Memory benchmark ...")
 
             events = str(str(check_output("sysbench memory run", shell=True)).split(
                 "total number of events:")[1].split("\\")[0].strip())
@@ -51,7 +51,7 @@ class Benchmarks:
 
         @staticmethod
         def fileio():
-            print("### Executing Sysbench FileIO benchmark ...\n\n")
+            print("\n\n### Executing Sysbench FileIO benchmark ...")
 
             events = str(str(check_output("sysbench fileio --file-test-mode=seqwr run", shell=True)).split(
                 "total number of events:")[1].split("\\")[0].strip())
@@ -63,7 +63,7 @@ class Benchmarks:
 
         @staticmethod
         def write():
-            print("### Executing Fio benchmark WRITE ...\n\n")
+            print("\n\n### Executing Fio benchmark WRITE ...")
 
             jobs = str(round(round(virtual_memory()[0] / 1024 / 1024) / 512))
             raw_result = str(check_output("fio --name=randwrite --ioengine=libaio --iodepth=16 --rw=randwrite "
@@ -77,7 +77,7 @@ class Benchmarks:
 
         @staticmethod
         def read():
-            print("### Executing Fio benchmark READ ...\n\n")
+            print("\n\n### Executing Fio benchmark READ ...")
 
             jobs = str(round(round(virtual_memory()[0] / 1024 / 1024) / 512))
             raw_result = str(check_output("fio --name=randread --ioengine=libaio --iodepth=16 --rw=randread "
@@ -94,7 +94,7 @@ class Benchmarks:
 
         @staticmethod
         def cachefly():
-            print("### Executing Speedtest benchmark ...\n\n")
+            print("\n\n### Executing Cachefly network performance benchmark  ...")
 
             download = str(str(check_output("wget -O /dev/null http://cachefly.cachefly.net/100mb.test", stderr=STDOUT,
                                             shell=True)).split("Downloaded:")[1].split("(")[1].split(")")[0].strip())
@@ -104,13 +104,13 @@ class Benchmarks:
 
         @staticmethod
         def speedtest():
-            print("### Executing Speedtest benchmark ...\n\n")
+            print("\n\n### Executing Speedtest network performance benchmark ...")
 
             raw_result = str(check_output("speedtest-cli --bytes", shell=True))
             download = str(raw_result.split("Download:")[1].split("/s")[0].replace("Mbyte", "MB/s").strip())
             upload = str(raw_result.split("Upload:")[1].split("/s")[0].replace("Mbyte", "MB/s").strip())
 
-            print("### Speedtest network performance: Download - {0}; Upload - {1}".format(download, upload))
+            print("### Speedtest network performance benchmark: Download - {0}; Upload - {1}".format(download, upload))
             return download, upload
 
 
