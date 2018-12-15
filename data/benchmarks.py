@@ -114,4 +114,4 @@ class Benchmarks:
             return download, upload
 
 
-Benchmarks.Network.cachefly()
+Benchmarks.execute()
