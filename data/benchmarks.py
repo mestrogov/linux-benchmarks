@@ -112,3 +112,6 @@ class Benchmarks:
 
             print("### Speedtest network performance: Download - {0}; Upload - {1}".format(download, upload))
             return download, upload
+
+
+Benchmarks.execute()
