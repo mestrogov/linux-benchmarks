@@ -32,7 +32,7 @@ class Benchmarks:
 
             s_events = str(str(check_output("sysbench cpu --threads=1 run", shell=True)).split(
                 "total number of events:")[1].split("\\")[0].strip())
-            m_events = str(str(check_output("sysbench cpu run", shell=True)).split(
+            m_events = str(str(check_output("sysbench cpu --threads=1000 run", shell=True)).split(
                 "total number of events:")[1].split("\\")[0].strip())
 
             print("### Sysbench CPU benchmark results: Single thread - {0} events; Multi thread - {1} events".
