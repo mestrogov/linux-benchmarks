@@ -7,18 +7,17 @@ from psutil import virtual_memory
 class Benchmarks:
     @staticmethod
     def execute():
-        for a in range(2):
-            print("### Executing benchmarks ...\n")
+        print("### Executing benchmarks ...\n")
 
-            Benchmarks.Sysbench.cpu()
-            Benchmarks.Sysbench.memory()
-            Benchmarks.Sysbench.fileio()
+        Benchmarks.Sysbench.cpu()
+        Benchmarks.Sysbench.memory()
+        Benchmarks.Sysbench.fileio()
 
-            Benchmarks.Fio.write()
-            Benchmarks.Fio.read()
+        Benchmarks.Fio.write()
+        Benchmarks.Fio.read()
 
-            Benchmarks.Network.cachefly()
-            Benchmarks.Network.speedtest()
+        Benchmarks.Network.cachefly()
+        Benchmarks.Network.speedtest()
 
     class Sysbench:
 
