@@ -1,11 +1,11 @@
-FROM python:3.7-slim
+FROM ubuntu:bionic
 MAINTAINER Yaroslav <hello@unimarijo.com>
 ENV INSTALL_PATH /data
 
 COPY . $INSTALL_PATH
 WORKDIR $INSTALL_PATH
 
-RUN apt-get update && apt-get install -y sysbench fio wget gcc
-RUN pip install -r requirements.txt
+RUN apt-get update && apt-get install -y python3 python3-pip sysbench fio wget
+RUN pip3 install -r requirements.txt
 
-CMD python benchmarks.py
+CMD python3 benchmarks.py
