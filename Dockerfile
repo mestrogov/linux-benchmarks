@@ -1,9 +1,11 @@
-FROM ubuntu:latest
-
-
+FROM python:3.7-slim
 MAINTAINER Yaroslav <hello@unimarijo.com>
+ENV INSTALL_PATH /data
 
-COPY run.sh data data/
-WORKDIR data
+COPY . $INSTALL_PATH
+WORKDIR $INSTALL_PATH
 
-CMD ["bash", "run.sh"]
+RUN apt-get update && apt-get install -y sysbench fio wget gcc
+RUN pip install -r requirements.txt
+
+CMD python benchmarks.py
